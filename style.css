@@ -35,6 +35,72 @@ body {
     padding: 0 20px;
 }
 
+/* Header */
+.top-header {
+    background: var(--dark);
+    color: var(--white);
+    padding: 0.75rem 0;
+    font-size: 0.9rem;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.header-item i {
+    color: var(--secondary);
+    font-size: 0.8rem;
+}
+
+.header-social {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.header-social a {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.header-social a:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .top-header {
+        display: none;
+    }
+}
+
 /* Navigation */
 .navbar {
     position: fixed;
@@ -695,8 +761,80 @@ body {
 }
 
 /* Sections */
-.staff, .features, .gallery, .courses, .contact {
+.staff, .features, .gallery, .courses, .faq, .contact {
     padding: 120px 0;
+}
+
+/* FAQ Section */
+.faq {
+    background: var(--light-gray);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--white);
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.faq-question {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background: var(--light-gray);
+}
+
+.faq-question h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin: 0;
+}
+
+.faq-question i {
+    color: var(--primary);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: var(--light-gray);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding: 0 2rem 1.5rem;
+}
+
+.faq-answer p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0;
+    padding-top: 1rem;
 }
 
 .innovation-hub {
@@ -1353,9 +1491,58 @@ body {
 
 .footer-content {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
     gap: 3rem;
     margin-bottom: 3rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-bottom-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+    color: var(--white);
 }
 
 .footer-logo {
@@ -1374,10 +1561,39 @@ body {
 }
 
 .footer-links h4,
-.footer-contact h4 {
+.footer-contact h4,
+.footer-courses h4 {
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: var(--white);
+}
+
+.footer-courses ul li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-courses ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    border-radius: 5px;
+}
+
+.footer-courses ul li a:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 0.5rem;
+    transform: translateX(5px);
+}
+
+.footer-courses ul li a i {
+    color: var(--secondary);
+    width: 16px;
+    text-align: center;
 }
 
 .footer-links ul {
