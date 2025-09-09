@@ -1,4 +1,6 @@
-// Counter Animation
+// NSCC Website JavaScript
+
+// Counter Animation Function
 function animateCounter(element) {
     const target = parseInt(element.dataset.count);
     const suffix = element.dataset.suffix || '';
@@ -24,20 +26,7 @@ function animateCounter(element) {
     }, 16);
 }
 
-// Intersection Observer for triggering animations
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const counters = entry.target.querySelectorAll('.stat-number[data-count]');
-            counters.forEach(counter => {
-                animateCounter(counter);
-            });
-            observer.unobserve(entry.target);
-        }
-    });
-});
-
-// Mobile Menu Toggle
+// Mobile Menu Toggle Function
 function toggleMobileMenu() {
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -46,31 +35,47 @@ function toggleMobileMenu() {
     navLinks.classList.toggle('active');
 }
 
-// Start animation when page loads
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Counter Animation Observer
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = entry.target.querySelectorAll('.stat-number[data-count]');
+                counters.forEach(counter => {
+                    animateCounter(counter);
+                });
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    });
+
+    // Observe stats section
     const statsSection = document.querySelector('.hero-stats');
     if (statsSection) {
-        observer.observe(statsSection);
+        counterObserver.observe(statsSection);
     }
     
-    // Mobile menu event listener
+    // Mobile menu functionality
     const mobileToggle = document.querySelector('.mobile-menu-toggle');
     if (mobileToggle) {
         mobileToggle.addEventListener('click', toggleMobileMenu);
     }
     
-    // Close menu when clicking nav links
+    // Close mobile menu when clicking nav links
     const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            const mobileToggle = document.querySelector('.mobile-menu-toggle');
-            const navLinksContainer = document.querySelector('.nav-links');
-            mobileToggle.classList.remove('active');
-            navLinksContainer.classList.remove('active');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const menu = document.querySelector('.nav-links');
+            if (toggle && menu) {
+                toggle.classList.remove('active');
+                menu.classList.remove('active');
+            }
         });
     });
     
-    // FAQ Toggle functionality
+    // FAQ accordion functionality
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
