@@ -1832,8 +1832,53 @@ body {
     
     .footer-content {
         grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .footer-brand {
         text-align: center;
-        gap: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer-brand p {
+        max-width: 100%;
+        margin: 1rem 0;
+    }
+    
+    .social-links {
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+    
+    .footer-links,
+    .footer-courses,
+    .footer-contact {
+        text-align: left;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-links h4,
+    .footer-courses h4,
+    .footer-contact h4 {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        color: var(--secondary);
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .footer-bottom-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
     }
     
     .innovation-hub, .features, .gallery, .courses, .contact {
