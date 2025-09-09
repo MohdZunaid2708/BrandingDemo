@@ -37,10 +37,36 @@ const observer = new IntersectionObserver((entries) => {
     });
 });
 
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    mobileToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+}
+
 // Start animation when page loads
 document.addEventListener('DOMContentLoaded', () => {
     const statsSection = document.querySelector('.hero-stats');
     if (statsSection) {
         observer.observe(statsSection);
     }
+    
+    // Mobile menu event listener
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', toggleMobileMenu);
+    }
+    
+    // Close menu when clicking nav links
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinksContainer = document.querySelector('.nav-links');
+            mobileToggle.classList.remove('active');
+            navLinksContainer.classList.remove('active');
+        });
+    });
 });
